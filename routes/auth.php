@@ -4,7 +4,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\GoogleController;
+    use App\Http\Controllers\Auth\FacebookController;
+    use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -81,3 +82,11 @@ Route::get('/twitter', [TwitterController::class, 'redirectToTwitter'])
 Route::get('/twitter/callback', [TwitterController::class, 'handleTwitterCallback'])
     ->middleware('guest')
     ->name('twitter/callback');
+
+Route::get('/facebook', [FacebookController::class, 'redirectToFacebook'])
+    ->middleware('guest')
+    ->name('facebook');
+
+Route::get('/facebook/callback', [FacebookController::class, 'handleFacebookCallback'])
+    ->middleware('guest')
+    ->name('facebook/callback');
