@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
     use App\Http\Controllers\Auth\FacebookController;
+    use App\Http\Controllers\Auth\GithubController;
     use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
@@ -90,3 +91,11 @@ Route::get('/facebook', [FacebookController::class, 'redirectToFacebook'])
 Route::get('/facebook/callback', [FacebookController::class, 'handleFacebookCallback'])
     ->middleware('guest')
     ->name('facebook/callback');
+
+Route::get('/github', [GithubController::class, 'redirectToGithub'])
+    ->middleware('guest')
+    ->name('github');
+
+Route::get('/github/callback', [GithubController::class, 'handleGithubCallback'])
+    ->middleware('guest')
+    ->name('github/callback');

@@ -67,6 +67,11 @@
                     {{--                    <strong>Login With Google</strong>--}}
                     <i class="fas fa-facebook" aria-hidden="true"></i> Facebook
                 </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ url('/github') }}" style="margin-top: 20px;" class="justify-center btn btn-lg btn-success btn-block">
+                    {{--                    <strong>Login With Google</strong>--}}
+                    <i class="fas fa-github" aria-hidden="true"></i> Github
+                </a>
             </div>
         </form>
     </x-auth-card>

@@ -47,4 +47,10 @@ return [
         'client_secret' => env('FACEBOOK_API_SECRET_KEY'),
         'redirect' => env('FACEBOOK_CALLBACK_URL'),
     ],
+
+    'github' => [
+        'client_id' => env('GITHUB_API_KEY'),
+        'client_secret' => env('GITHUB_API_SECRET_KEY'),
+        'redirect' => env('GITHUB_CALLBACK_URL'),
+    ],
 ];
