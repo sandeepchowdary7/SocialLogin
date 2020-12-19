@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+    use App\Http\Controllers\Auth\SocialiteController;
     use App\Http\Controllers\Auth\TwitterController;
     use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -68,34 +69,44 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->middleware('auth')
                 ->name('logout');
 
-Route::get('/google', [GoogleController::class, 'redirectToGoogle'])
+//Socialite Login i.e Facebook, Google, Twitter, Github
+Route::get('/{provider}', [SocialiteController::class, 'redirectToProvider'])
     ->middleware('guest')
-    ->name('google');
+    ->name('{provider}');
 
-Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])
+Route::get('/{provider}/callback', [SocialiteController::class, 'handleProviderCallback'])
     ->middleware('guest')
-    ->name('google/callback');
+    ->name('{provider}/callback');
 
-Route::get('/twitter', [TwitterController::class, 'redirectToTwitter'])
-    ->middleware('guest')
-    ->name('twitter');
 
-Route::get('/twitter/callback', [TwitterController::class, 'handleTwitterCallback'])
-    ->middleware('guest')
-    ->name('twitter/callback');
-
-Route::get('/facebook', [FacebookController::class, 'redirectToFacebook'])
-    ->middleware('guest')
-    ->name('facebook');
-
-Route::get('/facebook/callback', [FacebookController::class, 'handleFacebookCallback'])
-    ->middleware('guest')
-    ->name('facebook/callback');
-
-Route::get('/github', [GithubController::class, 'redirectToGithub'])
-    ->middleware('guest')
-    ->name('github');
-
-Route::get('/github/callback', [GithubController::class, 'handleGithubCallback'])
-    ->middleware('guest')
-    ->name('github/callback');
+//Route::get('/google', [GoogleController::class, 'redirectToGoogle'])
+//    ->middleware('guest')
+//    ->name('google');
+//
+//Route::get('/google/callback', [GoogleController::class, 'handleGoogleCallback'])
+//    ->middleware('guest')
+//    ->name('google/callback');
+//
+//Route::get('/twitter', [TwitterController::class, 'redirectToTwitter'])
+//    ->middleware('guest')
+//    ->name('twitter');
+//
+//Route::get('/twitter/callback', [TwitterController::class, 'handleTwitterCallback'])
+//    ->middleware('guest')
+//    ->name('twitter/callback');
+//
+//Route::get('/facebook', [FacebookController::class, 'redirectToFacebook'])
+//    ->middleware('guest')
+//    ->name('facebook');
+//
+//Route::get('/facebook/callback', [FacebookController::class, 'handleFacebookCallback'])
+//    ->middleware('guest')
+//    ->name('facebook/callback');
+//
+//Route::get('/github', [GithubController::class, 'redirectToGithub'])
+//    ->middleware('guest')
+//    ->name('github');
+//
+//Route::get('/github/callback', [GithubController::class, 'handleGithubCallback'])
+//    ->middleware('guest')
+//    ->name('github/callback');
