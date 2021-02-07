@@ -1,6 +1,9 @@
 # For more information: https://laravel.com/docs/sail
 version: '3'
 services:
+  workspace:
+    port:
+      - 6001:6001
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.0
